@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - YM FURNITUR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>YM FURNITUR</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#dashboard" class="active"><i class="fas fa-chart-pie"></i> <span>Dashboard</span></a></li>
+                <li><a href="#produk"><i class="fas fa-box"></i> <span>Produk</span></a></li>
+                <li><a href="#kategori"><i class="fas fa-tags"></i> <span>Kategori</span></a></li>
+                <li><a href="#transaksi"><i class="fas fa-shopping-cart"></i> <span>Transaksi</span></a></li>
+                <li><a href="#testimoni"><i class="fas fa-star"></i> <span>Testimoni</span></a></li>
+                <li><a href="#promo"><i class="fas fa-tags"></i> <span>Promo</span></a></li>
+                <li><a href="#grafik"><i class="fas fa-chart-bar"></i> <span>Grafik</span></a></li>
+                <li><a href="#notifikasi"><i class="fas fa-bell"></i> <span>Notifikasi</span></a></li>
+                <li><a href="#backup"><i class="fas fa-database"></i> <span>Backup & Restore</span></a></li>
+                <li><a href="#log"><i class="fas fa-history"></i> <span>Aktivitas Log</span></a></li>
+                <li><a href="#footer"><i class="fas fa-edit"></i> <span>Footer</span></a></li>
+                <li><a href="#pengaturan"><i class="fas fa-cog"></i> <span>Pengaturan</span></a></li>
+                <li><a href="#" onclick="logoutAdmin()"><i class="fas fa-sign-out-alt"></i> <span>Log out</span></a></li>
+            </ul>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- HEADER -->
+            <div class="header-admin">
+                <div class="header-left">
+                    <h1>Dashboard <span>Admin</span></h1>
+                </div>
+                <div class="header-right">
+                    <div class="clock-display" id="clockDisplay">00:00:00</div>
+                    <div class="sid-display">SID: <span id="sidDisplay">-</span></div>
+                    <button class="logout-btn" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+
+            <!-- STATS CARDS -->
+            <div class="card-grid" id="statsCards">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-box"></i></div>
+                    <div class="card-content">
+                        <h3>Total Produk</h3>
+                        <div class="value" id="totalProduk">0</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <div class="card-content">
+                        <h3>Transaksi Hari Ini</h3>
+                        <div class="value" id="transaksiHariIni">0</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-users"></i></div>
+                    <div class="card-content">
+                        <h3>Total Pelanggan</h3>
+                        <div class="value" id="totalPelanggan">0</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <div class="card-content">
+                        <h3>Pendapatan</h3>
+                        <div class="value" id="totalPendapatan">Rp0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION: PRODUK -->
+            <section id="produk" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-box"></i> Manajemen Produk</h2>
+                    <button class="btn-primary" onclick="openModal('produkModal')">
+                        <i class="fas fa-plus"></i> Tambah Produk
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Gambar</th>
+                                <th>Nama</th>
+                                <th>Kategori</th>
+                                <th>Harga</th>
+                                <th>Diskon</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="produkTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION: KATEGORI -->
+            <section id="kategori" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-tags"></i> Manajemen Kategori</h2>
+                    <button class="btn-primary" onclick="openModal('kategoriModal')">
+                        <i class="fas fa-plus"></i> Tambah Kategori
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nama Kategori</th>
+                                <th>Jumlah Produk</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="kategoriTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION: TRANSAKSI -->
+            <section id="transaksi" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-shopping-cart"></i> Manajemen Transaksi</h2>
+                </div>
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Kode</th>
+                                <th>Pelanggan</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Tanggal</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transaksiTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION: TESTIMONI -->
+            <section id="testimoni" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-star"></i> Manajemen Testimoni</h2>
+                    <button class="btn-primary" onclick="openModal('testimoniModal')">
+                        <i class="fas fa-plus"></i> Tambah Testimoni
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nama</th>
+                                <th>Kota</th>
+                                <th>Bintang</th>
+                                <th>Testimoni</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="testimoniTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION: PROMO -->
+            <section id="promo" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-tags"></i> Manajemen Promo</h2>
+                    <button class="btn-primary" onclick="openModal('promoModal')">
+                        <i class="fas fa-plus"></i> Tambah Promo
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Kode</th>
+                                <th>Nama</th>
+                                <th>Diskon</th>
+                                <th>Minimal</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="promoTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION: GRAFIK -->
+            <section id="grafik" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-bar"></i> Grafik Penjualan</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </section>
+
+            <!-- SECTION: NOTIFIKASI -->
+            <section id="notifikasi" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-bell"></i> Notifikasi</h2>
+                </div>
+                <div id="notifikasiList" class="notifikasi-list"></div>
+            </section>
+
+            <!-- SECTION: BACKUP & RESTORE -->
+            <section id="backup" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-database"></i> Backup & Restore</h2>
+                </div>
+                <div class="backup-actions">
+                    <button class="btn-primary" onclick="backupData()">
+                        <i class="fas fa-download"></i> Backup Data
+                    </button>
+                    <button class="btn-outline" onclick="document.getElementById('restoreFile').click()">
+                        <i class="fas fa-upload"></i> Restore Data
+                    </button>
+                    <input type="file" id="restoreFile" accept=".json" style="display:none" onchange="restoreData(event)">
+                </div>
+            </section>
+
+            <!-- SECTION: AKTIVITAS LOG -->
+            <section id="log" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-history"></i> Aktivitas Log</h2>
+                </div>
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Waktu</th>
+                                <th>Admin</th>
+                                <th>Aksi</th>
+                                <th>Detail</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION: FOOTER -->
+            <section id="footer" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-edit"></i> Edit Footer</h2>
+                </div>
+                <div class="form-group">
+                    <label>Teks Footer</label>
+                    <input type="text" id="footerText" class="form-control" placeholder="Masukkan teks footer">
+                </div>
+                <div class="form-group">
+                    <label>Link Instagram</label>
+                    <input type="text" id="footerInstagram" class="form-control" placeholder="https://instagram.com/...">
+                </div>
+                <button class="btn-primary" onclick="updateFooter()">Simpan Perubahan</button>
+            </section>
+
+            <!-- SECTION: PENGATURAN -->
+            <section id="pengaturan" class="admin-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cog"></i> Pengaturan Notifikasi</h2>
+                </div>
+                <div class="form-group">
+                    <label>Notifikasi Email</label>
+                    <select id="notifEmail" class="form-control">
+                        <option value="on">Aktif</option>
+                        <option value="off">Nonaktif</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Notifikasi WhatsApp</label>
+                    <select id="notifWA" class="form-control">
+                        <option value="on">Aktif</option>
+                        <option value="off">Nonaktif</option>
+                    </select>
+                </div>
+                <button class="btn-primary" onclick="updatePengaturan()">Simpan Pengaturan</button>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL PRODUK -->
+    <div class="modal-overlay" id="produkModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="produkModalTitle">Tambah Produk</h3>
+                <button class="btn-close" onclick="closeModal('produkModal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="produkForm">
+                    <input type="hidden" id="produkId">
+                    <div class="form-group">
+                        <label>Nama Produk</label>
+                        <input type="text" id="produkNama" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        <select id="produkKategori" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Harga</label>
+                        <input type="number" id="produkHarga" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Diskon (%)</label>
+                        <input type="number" id="produkDiskon" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Deskripsi</label>
+                        <textarea id="produkDeskripsi"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Gambar (URL)</label>
+                        <input type="text" id="produkGambar" placeholder="https://...">
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" id="produkBaru"> Produk Baru</label>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL KATEGORI -->
+    <div class="modal-overlay" id="kategoriModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Tambah Kategori</h3>
+                <button class="btn-close" onclick="closeModal('kategoriModal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="kategoriForm">
+                    <input type="hidden" id="kategoriId">
+                    <div class="form-group">
+                        <label>Nama Kategori</label>
+                        <input type="text" id="kategoriNama" required>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL TESTIMONI -->
+    <div class="modal-overlay" id="testimoniModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Tambah Testimoni</h3>
+                <button class="btn-close" onclick="closeModal('testimoniModal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="testimoniForm">
+                    <input type="hidden" id="testimoniId">
+                    <div class="form-group">
+                        <label>Nama</label>
+                        <input type="text" id="testimoniNama" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Kota</label>
+                        <input type="text" id="testimoniKota">
+                    </div>
+                    <div class="form-group">
+                        <label>Bintang</label>
+                        <select id="testimoniBintang">
+                            <option value="5">⭐⭐⭐⭐⭐</option>
+                            <option value="4">⭐⭐⭐⭐</option>
+                            <option value="3">⭐⭐⭐</option>
+                            <option value="2">⭐⭐</option>
+                            <option value="1">⭐</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Testimoni</label>
+                        <textarea id="testimoniTeks" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PROMO -->
+    <div class="modal-overlay" id="promoModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Tambah Promo</h3>
+                <button class="btn-close" onclick="closeModal('promoModal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <form id="promoForm">
+                    <input type="hidden" id="promoId">
+                    <div class="form-group">
+                        <label>Kode Promo</label>
+                        <input type="text" id="promoKode" placeholder="YMFIRST10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Promo</label>
+                        <input type="text" id="promoNama" placeholder="Promo Pembelian Pertama" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Diskon (%)</label>
+                        <input type="number" id="promoDiskon" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Minimal Pembelian (Rp)</label>
+                        <input type="number" id="promoMinimal" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" id="promoAktif" checked> Aktif</label>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="supabase.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

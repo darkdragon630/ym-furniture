@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YM FURNITUR - Mebel Jepara Berkualitas Sejak 1985</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="pagination.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- HLS.js untuk video streaming -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+    <div class="logo">
+    YM FURNITUR
+    <span>MEBEL JEPARA</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="#hero">Beranda</a></li>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#produk">Produk</a></li>
+        <li><a href="#promo">Promo</a></li>
+        <li><a href="#testimoni">Testimoni</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+        <li id="authArea">
+        <a href="login.html" class="nav-login-btn" style="color:var(--emas);font-weight:600;">🔐 Masuk</a>
+        </li>
+    </ul>
+    <div class="nav-right">
+        <button class="btn-cart" onclick="bukaKeranjang()">
+            🛒 Keranjang
+            <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-content">
+        <div class="hero-badge">✦ Mebel Asli Jepara</div>
+        <h1>Mebel Jepara Berkualitas<br><em>Sejak 1985</em></h1>
+        <p>Keindahan kayu jati pilihan dipadukan dengan keahlian pengrajin turun-temurun Jepara. Setiap karya adalah warisan, setiap sentuhan adalah seni.</p>
+        <div class="hero-btns">
+            <a href="#produk" class="btn-primary">Lihat Produk</a>
+            <a href="https://wa.me/6288980723930?text=Halo%20YM%20FURNITUR%2C%20saya%20ingin%20pesan%20mebel" class="btn-outline" target="_blank">Pesan Sekarang</a>
+            <a href="#kontak" class="btn-outline">Hubungi Kami</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item"><div class="stat-num">38+</div><div class="stat-label">Tahun Pengalaman</div></div>
+            <div class="stat-item"><div class="stat-num">5.000+</div><div class="stat-label">Produk Terjual</div></div>
+            <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Pelanggan Setia</div></div>
+        </div>
+    </div>
+    <div class="hero-img">
+        <div class="hero-img-box">
+            <img src="https://i.ibb.co.com/BHqVmDMt/download.jpg" alt="Kursi Tamu Ukir Klasik Jepara" style="width:100%;height:100%;object-fit:cover;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="about-grid">
+        <div class="about-img-area">
+            <div style="width:100%;border-radius:10px;overflow:hidden;position:relative;border:1px solid rgba(196,154,53,0.2);box-shadow:0 8px 40px rgba(107,63,26,0.15);">
+                <video id="aboutVideo" autoplay muted loop playsinline style="width:100%;display:block;max-height:480px;object-fit:cover;"></video>
+                <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(26,18,9,0.7));padding:20px;display:flex;align-items:center;gap:12px;">
+                    <div style="width:10px;height:10px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80;animation:pulse 1.5s infinite;"></div>
+                    <span style="color:#fff;font-size:0.82rem;letter-spacing:1px;">Workshop Aktif · Jepara</span>
+                </div>
+            </div>
+            <div class="about-badge-box">
+                <strong>1985</strong>
+                <span>Berdiri Sejak</span>
+            </div>
+        </div>
+        <div class="about-text">
+            <p class="section-label">Tentang Kami</p>
+            <h2 class="section-title">Warisan Seni Mebel Jepara</h2>
+            <p style="color:var(--abu);line-height:1.8;margin-bottom:1.5rem;font-size:0.95rem;">
+                YM FURNITUR lahir dari passion seorang pengrajin muda di jantung kota Jepara pada tahun 1985. Berawal dari sebuah bengkel kecil di RT 4 RW 12 Bangsri Cobaan Sidorejo, usaha ini tumbuh menjadi salah satu toko mebel terpercaya yang dikenal luas oleh pelanggan dari berbagai penjuru Indonesia.
+            </p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div>
+                        <div style="display:flex;gap:12px;align-items:center;margin-bottom:4px;">
+                            <div class="tl-dot"></div>
+                            <span class="tl-year">1985 — Awal Mula</span>
+                        </div>
+                        <p class="tl-desc" style="padding-left:24px;">Pendiri YM FURNITUR mulai mengukir kayu jati dengan tangan sendiri di workshop sederhana berukuran 20m². Produk pertama adalah kursi tamu ukiran khas Jepara yang langsung diminati warga sekitar.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div>
+                        <div style="display:flex;gap:12px;align-items:center;margin-bottom:4px;">
+                            <div class="tl-dot"></div>
+                            <span class="tl-year">2026 — Hadir Online</span>
+                        </div>
+                        <p class="tl-desc" style="padding-left:24px;">Kini YM FURNITUR hadir secara digital agar lebih mudah dijangkau oleh pelanggan dari seluruh Indonesia. Dengan pengalaman lebih dari 40 tahun, kami siap menghadirkan mebel impian langsung ke rumah Anda.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="keunggulan">
+                <div class="keunggulan-item"><h4>🌳 Kayu Berkualitas</h4><p>Jati & mahoni pilihan grade A</p></div>
+                <div class="keunggulan-item"><h4>✋ Handmade Jepara</h4><p>Dibuat tangan oleh pengrajin berpengalaman</p></div>
+                <div class="keunggulan-item"><h4>💰 Harga Terjangkau</h4><p>Langsung dari pengrajin, tanpa perantara</p></div>
+                <div class="keunggulan-item"><h4>🎨 Custom Desain</h4><p>Sesuaikan ukuran, warna & motif</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUK -->
+<section id="produk">
+    <p class="section-label">Koleksi Kami</p>
+    <h2 class="section-title">Produk Unggulan</h2>
+    <div class="search-wrap">
+        <input type="text" class="search-input" id="searchInput" placeholder="🔍 Cari produk..." oninput="filterProduk()">
+        <div class="price-filter">
+            Urutkan:
+            <select id="sortSelect" onchange="filterProduk()">
+                <option value="">— Semua —</option>
+                <option value="low">Harga Terendah</option>
+                <option value="high">Harga Tertinggi</option>
+                <option value="diskon">Diskon Terbesar</option>
+            </select>
+        </div>
+    </div>
+    <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" onclick="setKategori('all',this)">Semua</button>
+        <button class="filter-btn" onclick="setKategori('Kursi Tamu',this)">Kursi Tamu</button>
+        <button class="filter-btn" onclick="setKategori('Meja Makan',this)">Meja Makan</button>
+        <button class="filter-btn" onclick="setKategori('Lemari',this)">Lemari</button>
+        <button class="filter-btn" onclick="setKategori('Tempat Tidur',this)">Tempat Tidur</button>
+        <button class="filter-btn" onclick="setKategori('Sofa',this)">Sofa</button>
+        <button class="filter-btn" onclick="setKategori('Kitchen Set',this)">Kitchen Set</button>
+        <button class="filter-btn" onclick="setKategori('Meja Kerja',this)">Meja Kerja</button>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+    <!-- Pagination Produk -->
+    <div class="pagination-container" id="produkPagination"></div>
+</section>
+
+<!-- PROMO DISKON -->
+<section id="promo">
+    <div class="promo-inner">
+        <div class="promo-text">
+            <p style="color:var(--emas);font-size:0.75rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:0.5rem;">✦ Penawaran Spesial</p>
+            <h2>Diskon Eksklusif<br>Bulan Ini</h2>
+            <p>Gunakan kode promo saat checkout.<br>Klik kode untuk menyalin otomatis.</p>
+        </div>
+        <div class="promo-cards">
+            <div class="promo-card">
+                <div class="promo-pct">10%</div>
+                <div class="promo-desc">Pembelian pertama</div>
+                <div class="promo-code" onclick="copyKode('YMFIRST10')">YMFIRST10</div>
+            </div>
+            <div class="promo-card">
+                <div class="promo-pct">15%</div>
+                <div class="promo-desc">Order ≥ Rp5 juta</div>
+                <div class="promo-code" onclick="copyKode('YMGRAND15')">YMGRAND15</div>
+            </div>
+            <div class="promo-card">
+                <div class="promo-pct">20%</div>
+                <div class="promo-desc">Custom order</div>
+                <div class="promo-code" onclick="copyKode('YMCUSTOM20')">YMCUSTOM20</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONI -->
+<section id="testimoni">
+    <p class="section-label">Kata Mereka</p>
+    <h2 class="section-title">Testimoni Pelanggan</h2>
+    <div class="testi-grid" id="testiGrid"></div>
+    <!-- Pagination Testimoni -->
+    <div class="pagination-container" id="testiPagination"></div>
+</section>
+
+<!-- GALERI -->
+<section id="galeri">
+    <p class="section-label">Workshop Kami</p>
+    <h2 class="section-title">Galeri Produksi</h2>
+    <p class="section-sub">Setiap detail dikerjakan dengan penuh dedikasi oleh pengrajin berpengalaman kami.</p>
+    <div class="galeri-grid" id="galeriGrid"></div>
+    <!-- Pagination Galeri -->
+    <div class="pagination-container" id="galeriPagination"></div>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak">
+    <p class="section-label">Hubungi Kami</p>
+    <h2 class="section-title">Ada yang Bisa Kami Bantu?</h2>
+    <div class="kontak-grid">
+        <div>
+            <div class="kontak-info-item">
+                <div class="kontak-icon">📱</div>
+                <div>
+                    <div class="kontak-label">WhatsApp</div>
+                    <div class="kontak-val"><a href="https://wa.me/6288980723930" target="_blank">088980723930</a></div>
+                </div>
+            </div>
+            <div class="kontak-info-item">
+                <div class="kontak-icon">✉️</div>
+                <div>
+                    <div class="kontak-label">Email</div>
+                    <div class="kontak-val"><a href="mailto:ikepuspitasari404@gmail.com">ikepuspitasari404@gmail.com</a></div>
+                </div>
+            </div>
+            <div class="kontak-info-item">
+                <div class="kontak-icon">📍</div>
+                <div>
+                    <div class="kontak-label">Alamat Workshop</div>
+                    <div class="kontak-val">RT 4 RW 12, Bangsri Cobaan Sidorejo,<br>Jepara, Jawa Tengah</div>
+                </div>
+            </div>
+            <div class="kontak-info-item">
+                <div class="kontak-icon">🕐</div>
+                <div>
+                    <div class="kontak-label">Jam Operasional</div>
+                    <div class="kontak-val">Senin – Sabtu: 08.00 – 17.00 WIB<br>Minggu: 09.00 – 14.00 WIB</div>
+                </div>
+            </div>
+            <a href="https://wa.me/6288980723930?text=Halo%20YM%20FURNITUR%2C%20saya%20ingin%20konsultasi%20mebel" target="_blank" class="btn-primary" style="margin-top:1rem;display:inline-flex;gap:8px;align-items:center;">
+                💬 Chat WhatsApp Sekarang
+            </a>
+        </div>
+        <div>
+            <div class="map-placeholder">
+                <div class="map-icon">🗺️</div>
+                <p>RT 4 RW 12, Bangsri Cobaan Sidorejo</p>
+                <p style="font-size:0.8rem;margin-top:4px;">Jepara, Jawa Tengah</p>
+                <a href="https://maps.google.com/?q=Jepara+Jawa+Tengah" target="_blank" style="margin-top:12px;padding:8px 20px;background:var(--coklat);color:var(--cream);border-radius:6px;font-size:0.85rem;text-decoration:none;">Buka di Google Maps</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <span class="logo">YM FURNITUR <span>MEBEL JEPARA</span></span>
+            <p>Menghadirkan keindahan kayu jati asli Jepara ke rumah Anda sejak 1985. Kualitas terjamin, harga terjangkau, pelayanan tulus dari hati.</p>
+            <div class="socials">
+                <a class="social-btn" href="#" title="Instagram">📸</a>
+                <a class="social-btn" href="#" title="Facebook">👥</a>
+                <a class="social-btn" href="#" title="TikTok">🎵</a>
+                <a class="social-btn" href="https://wa.me/6288980723930" title="WhatsApp" target="_blank">💬</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Navigasi</h4>
+            <ul>
+                <li><a href="#hero">Beranda</a></li>
+                <li><a href="#about">Tentang Kami</a></li>
+                <li><a href="#produk">Produk</a></li>
+                <li><a href="#promo">Promo</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+                <li><a href="login.html" style="color:var(--emas);">🔐 Masuk</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Kategori</h4>
+            <ul>
+                <li><a href="#produk">Kursi Tamu</a></li>
+                <li><a href="#produk">Meja Makan</a></li>
+                <li><a href="#produk">Lemari</a></li>
+                <li><a href="#produk">Tempat Tidur</a></li>
+                <li><a href="#produk">Sofa</a></li>
+                <li><a href="#produk">Kitchen Set</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Layanan</h4>
+            <ul>
+                <li><a href="#">Custom Desain</a></li>
+                <li><a href="#">Pengiriman Cargo</a></li>
+                <li><a href="#">Konsultasi Gratis</a></li>
+                <li><a href="#">Garansi Produk</a></li>
+                <li><a href="#">After Sales</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2024 YM FURNITUR — Mebel Jepara Berkualitas Sejak 1985. Semua hak dilindungi.</p>
+        <p>Dibuat dengan ❤️ di Jepara, Jawa Tengah</p>
+    </div>
+</footer>
+
+<!-- WA FLOAT BUTTON -->
+<a href="https://wa.me/6288980723930?text=Halo%20YM%20FURNITUR" class="wa-float" target="_blank" title="Chat WhatsApp">💬</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- MODAL KERANJANG -->
+<div class="modal-overlay" id="modalKeranjang">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3>🛒 Keranjang Belanja</h3>
+            <button class="btn-close" onclick="tutupKeranjang()">✕</button>
+        </div>
+        <div class="modal-body">
+            <div id="cartContent"></div>
+            <div class="promo-input-row">
+                <input type="text" class="promo-input" id="promoInput" placeholder="Masukkan kode promo..." style="text-transform:uppercase">
+                <button class="btn-apply-promo" onclick="applyPromo()">Terapkan</button>
+            </div>
+            <div class="promo-status" id="promoStatus"></div>
+            <div class="cart-total" id="cartTotal"></div>
+            <button class="btn-checkout-wa" onclick="bukaCKO()" id="btnCKO" style="display:none;">Lanjut ke Checkout →</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL CHECKOUT -->
+<div class="modal-overlay" id="modalCKO">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3>📦 Form Pemesanan</h3>
+            <button class="btn-close" onclick="tutupCKO()">✕</button>
+        </div>
+        <div class="modal-body">
+            <!-- DASHBOARD RINGKASAN -->
+            <div style="background:linear-gradient(135deg,#1A1209,#3D2008);border-radius:10px;padding:20px;margin-bottom:20px;">
+                <p style="color:var(--emas);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;">✦ Ringkasan Pesanan</p>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;">
+                    <div style="background:rgba(196,154,53,0.12);border:1px solid rgba(196,154,53,0.25);border-radius:8px;padding:12px;text-align:center;">
+                        <div style="font-size:1.8rem;font-family:'Playfair Display',serif;color:var(--emas);" id="dashJml">0</div>
+                        <div style="font-size:0.7rem;color:rgba(245,239,224,0.55);margin-top:2px;">Item</div>
+                    </div>
+                    <div style="background:rgba(196,154,53,0.12);border:1px solid rgba(196,154,53,0.25);border-radius:8px;padding:12px;text-align:center;">
+                        <div style="font-size:0.95rem;font-weight:600;color:var(--emas);" id="dashSubtotal">Rp0</div>
+                        <div style="font-size:0.7rem;color:rgba(245,239,224,0.55);margin-top:2px;">Subtotal</div>
+                    </div>
+                    <div style="background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.25);border-radius:8px;padding:12px;text-align:center;">
+                        <div style="font-size:0.95rem;font-weight:600;color:#4ade80;" id="dashTotal">Rp0</div>
+                        <div style="font-size:0.7rem;color:rgba(245,239,224,0.55);margin-top:2px;">Total Bayar</div>
+                    </div>
+                </div>
+                <div id="dashItems" style="font-size:0.8rem;color:rgba(245,239,224,0.65);line-height:1.9;border-top:1px solid rgba(196,154,53,0.18);padding-top:12px;"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nama Lengkap *</label>
+                    <input type="text" id="ckoNama" placeholder="Budi Santoso">
+                </div>
+                <div class="form-group">
+                    <label>Nomor HP / WhatsApp *</label>
+                    <input type="tel" id="ckoHP" placeholder="08xxxxxxxxxx">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Alamat Lengkap *</label>
+                <textarea id="ckoAlamat" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Provinsi, Kode Pos"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Pilih Ekspedisi *</label>
+                <select id="ckoEkspedisi">
+                    <option value="">— Pilih Ekspedisi —</option>
+                    <option value="JNE">JNE</option>
+                    <option value="J&T Express">J&T Express</option>
+                    <option value="Cargo Khusus Mebel">Cargo Khusus Mebel (Direkomendasikan)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Catatan Pesanan</label>
+                <textarea id="ckoCatatan" placeholder="Warna finishing, ukuran custom, instruksi khusus, dll..."></textarea>
+            </div>
+
+            <!-- METODE BAYAR: DANA SAJA -->
+            <div class="form-group">
+                <label>Metode Pembayaran</label>
+                <div style="background:rgba(0,112,243,0.06);border:1.5px solid rgba(0,112,243,0.25);border-radius:10px;padding:16px 18px;margin-top:8px;display:flex;align-items:center;gap:14px;">
+                    <div style="font-size:2.2rem;line-height:1;">💙</div>
+                    <div style="flex:1;">
+                        <div style="font-weight:600;color:#0070f3;font-size:1rem;">DANA</div>
+                        <div style="font-size:0.92rem;color:var(--coklat);margin-top:3px;font-weight:500;">088980723930</div>
+                        <div style="font-size:0.76rem;color:var(--abu);margin-top:3px;">a.n. YM FURNITUR — Transfer sesuai total, kirim bukti via WhatsApp</div>
+                    </div>
+                    <div style="background:#0070f3;color:#fff;padding:4px 12px;border-radius:20px;font-size:0.72rem;font-weight:600;white-space:nowrap;">✓ Aktif</div>
+                </div>
+            </div>
+
+            <button class="btn-checkout-wa" onclick="kirimWA()">
+                💬 Kirim Pesanan via WhatsApp
+            </button>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script src="auth.js"></script>
+<script src="cart.js"></script>
+</body>
+</html>

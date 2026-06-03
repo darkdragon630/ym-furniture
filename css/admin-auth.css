@@ -1,0 +1,305 @@
+/* ==============================================
+   ADMIN-AUTH.CSS - Login & Register Admin (Responsive)
+   ============================================== */
+
+/* ===== ROOT VARIABLES ===== */
+:root {
+    --coklat: #6B3F1A;
+    --coklat-muda: #A0622B;
+    --cream: #F5EFE0;
+    --cream-muda: #FDF8EE;
+    --hitam: #1A1209;
+    --emas: #C49A35;
+    --emas-muda: #E8C96A;
+    --putih: #FFFDF7;
+    --abu: #8A7A6A;
+    --merah: #c0392b;
+    --hijau: #25D366;
+}
+
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream-muda);
+    color: var(--hitam);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== AUTH WRAPPER ===== */
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1A1209, #3D2008);
+    padding: 20px;
+}
+
+/* ===== AUTH BOX ===== */
+.auth-box {
+    background: var(--putih);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 420px;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header .logo-small {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--coklat);
+    margin-bottom: 8px;
+}
+
+.auth-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--hitam);
+    margin-bottom: 4px;
+}
+
+.auth-header p {
+    color: var(--abu);
+    font-size: 0.9rem;
+}
+
+/* ===== FORM ===== */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--coklat);
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--emas);
+    box-shadow: 0 0 0 3px rgba(196, 154, 53, 0.1);
+}
+
+/* ===== BUTTON ===== */
+.btn-full {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: var(--emas);
+    color: var(--hitam);
+}
+
+.btn-primary:hover {
+    background: var(--emas-muda);
+    transform: translateY(-2px);
+}
+
+/* ===== AUTH FOOTER ===== */
+.auth-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--abu);
+}
+
+.auth-footer a {
+    color: var(--emas);
+    font-weight: 600;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ===== ERROR & SUCCESS ===== */
+.error-msg {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+}
+
+.success-msg {
+    background: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+}
+
+/* ============================================== */
+/* ===== RESPONSIVE ===== */
+/* ============================================== */
+
+/* ===== TABLET (768px - 1024px) ===== */
+@media (max-width: 1024px) {
+    .auth-box {
+        max-width: 400px;
+        padding: 32px;
+    }
+    
+    .auth-header .logo-small {
+        font-size: 1.4rem;
+    }
+    
+    .auth-header h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* ===== MOBILE (480px - 768px) ===== */
+@media (max-width: 768px) {
+    .auth-wrapper {
+        padding: 16px;
+    }
+    
+    .auth-box {
+        max-width: 380px;
+        padding: 28px;
+    }
+    
+    .auth-header .logo-small {
+        font-size: 1.2rem;
+    }
+    
+    .auth-header h2 {
+        font-size: 1.4rem;
+    }
+    
+    .auth-header p {
+        font-size: 0.8rem;
+    }
+    
+    .form-group label {
+        font-size: 0.8rem;
+    }
+    
+    .form-group input {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .btn-full {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== SMALL MOBILE (480px below) ===== */
+@media (max-width: 480px) {
+    .auth-wrapper {
+        padding: 12px;
+    }
+    
+    .auth-box {
+        max-width: 340px;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    
+    .auth-header .logo-small {
+        font-size: 1rem;
+    }
+    
+    .auth-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .auth-header p {
+        font-size: 0.75rem;
+    }
+    
+    .form-group {
+        margin-bottom: 12px;
+    }
+    
+    .form-group label {
+        font-size: 0.75rem;
+    }
+    
+    .form-group input {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    
+    .btn-full {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+    
+    .auth-footer {
+        font-size: 0.8rem;
+        margin-top: 16px;
+    }
+}
+
+/* ===== EXTRA SMALL (360px below) ===== */
+@media (max-width: 360px) {
+    .auth-box {
+        max-width: 300px;
+        padding: 16px;
+    }
+    
+    .auth-header .logo-small {
+        font-size: 0.9rem;
+    }
+    
+    .auth-header h2 {
+        font-size: 1rem;
+    }
+    
+    .auth-header p {
+        font-size: 0.7rem;
+    }
+    
+    .form-group input {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+    }
+    
+    .btn-full {
+        padding: 6px;
+        font-size: 0.8rem;
+    }
+}

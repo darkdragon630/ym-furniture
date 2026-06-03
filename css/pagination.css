@@ -1,0 +1,54 @@
+/* ============================================== */
+/* ===== PAGINATION STYLES ===== */
+/* ============================================== */
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.pagination-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--coklat);
+    border-radius: 6px;
+    background: var(--putih);
+    color: var(--coklat);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.pagination-btn:hover {
+    background: var(--coklat);
+    color: var(--cream);
+}
+
+.pagination-btn.active {
+    background: var(--emas);
+    color: var(--hitam);
+    border-color: var(--emas);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-info {
+    color: var(--abu);
+    font-size: 0.85rem;
+    margin: 0 10px;
+}
+
+/* ===== RESPONSIVE PAGINATION ===== */
+@media (max-width: 600px) {
+    .pagination-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}

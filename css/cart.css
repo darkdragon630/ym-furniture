@@ -1,0 +1,230 @@
+/* ============================================== */
+/* ===== CART & CHECKOUT MODALS ===== */
+/* ============================================== */
+
+/* ===== MODAL KERANJANG ===== */
+#modalKeranjang {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+#modalKeranjang.open {
+    display: flex;
+}
+
+#modalKeranjang .modal-box {
+    background: var(--putih);
+    padding: 24px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+#modalKeranjang .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+#modalKeranjang .modal-header h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--coklat);
+}
+
+#modalKeranjang .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--abu);
+}
+
+#modalKeranjang .btn-close:hover {
+    color: var(--merah);
+}
+
+.cart-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.cart-item-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--cream), #e8d5b0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.cart-item-name {
+    font-family: 'Playfair Display', serif;
+    color: var(--coklat);
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.cart-item-price {
+    color: var(--emas);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.cart-qty {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.qty-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #ddd;
+    background: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.qty-btn:hover {
+    background: var(--cream);
+}
+
+.qty-num {
+    font-size: 0.9rem;
+    min-width: 24px;
+    text-align: center;
+}
+
+.btn-hapus {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #E53E3E;
+    cursor: pointer;
+    font-size: 0.82rem;
+    align-self: flex-start;
+}
+
+.cart-empty {
+    text-align: center;
+    padding: 40px;
+    color: var(--abu);
+}
+
+.cart-empty .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.cart-total {
+    background: var(--cream-muda);
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-total strong {
+    font-family: 'Playfair Display', serif;
+    color: var(--coklat);
+    font-size: 1.1rem;
+}
+
+.promo-input-row {
+    display: flex;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.promo-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.promo-input:focus {
+    border-color: var(--emas);
+}
+
+.btn-apply-promo {
+    padding: 10px 18px;
+    background: var(--coklat);
+    color: var(--cream);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.btn-apply-promo:hover {
+    background: var(--coklat-muda);
+}
+
+.promo-status {
+    font-size: 0.82rem;
+    margin-top: 4px;
+}
+
+.promo-status.ok {
+    color: #2e7d32;
+}
+
+.promo-status.err {
+    color: #c62828;
+}
+
+/* ===== MODAL CHECKOUT ===== */
+#modalCKO {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+#modalCKO.open {
+    display: flex;
+}
+
+#modalCKO .modal-box {
+    background: var(--putih);
+    padding: 24px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}

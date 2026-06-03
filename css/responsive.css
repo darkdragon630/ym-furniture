@@ -1,0 +1,496 @@
+/* ==============================================
+   RESPONSIVE.CSS - YM FURNITUR
+   ============================================== */
+
+/* ===== TABLET & SMALL LAPTOP (1024px - 900px) ===== */
+@media (max-width: 1024px) {
+    /* FOOTER */
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    /* SIDEBAR ADMIN */
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main-content {
+        margin-left: 200px;
+    }
+}
+
+/* ===== TABLET & MOBILE (900px - 768px) ===== */
+@media (max-width: 900px) {
+    /* NAVBAR */
+    nav {
+        height: 55px;
+        padding: 0 5%;
+    }
+    
+    .logo {
+        font-size: 1rem;
+    }
+    
+    .logo span {
+        font-size: 0.55rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 55px;
+        left: 0;
+        right: 0;
+        background: rgba(26, 18, 9, 0.98);
+        padding: 20px 5%;
+        z-index: 998;
+        gap: 1.2rem;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+
+    /* HERO */
+    .hero-img {
+        display: none;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-stats {
+        gap: 1.5rem;
+    }
+
+    /* ABOUT */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .about-badge-box {
+        position: relative;
+        bottom: -10px;
+        right: 0;
+        margin: 0 auto;
+        width: fit-content;
+    }
+
+    /* KONTAK */
+    .kontak-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* GALERI */
+    .galeri-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    /* SIDEBAR ADMIN */
+    .sidebar {
+        width: 200px;
+    }
+    
+    .main-content {
+        margin-left: 200px;
+        padding: 20px;
+    }
+}
+
+/* ===== MOBILE (768px - 600px) ===== */
+@media (max-width: 768px) {
+    /* NAVBAR */
+    nav {
+        padding: 0 15px;
+    }
+    
+    .logo {
+        font-size: 0.9rem;
+    }
+    
+    .logo span {
+        font-size: 0.5rem;
+        letter-spacing: 1px;
+    }
+
+    /* HERO */
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hero-btns .btn-primary,
+    .hero-btns .btn-outline {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* ABOUT */
+    .about-img-area .about-badge-box {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        margin-top: -15px;
+        margin-left: auto;
+        width: fit-content;
+    }
+
+    /* PRODUK */
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .search-wrap {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    
+    .search-input {
+        max-width: 100%;
+    }
+
+    /* TESTIMONI */
+    .testi-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    /* KONTAK */
+    .map-placeholder {
+        height: 250px;
+    }
+
+    /* FOOTER */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* DASHBOARD ADMIN */
+    .dashboard-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: 15px;
+    }
+    
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .sidebar li {
+        border-bottom: none;
+        padding: 6px 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 6px;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+    }
+    
+    .header-admin {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .user-info {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    /* AUTH */
+    .auth-box {
+        padding: 24px;
+    }
+
+    /* PAGINATION */
+    .pagination-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ===== SMALL MOBILE (600px - 480px) ===== */
+@media (max-width: 600px) {
+    /* NAVBAR */
+    nav {
+        height: 50px;
+        padding: 0 10px;
+    }
+    
+    .logo {
+        font-size: 0.8rem;
+    }
+    
+    .logo span {
+        font-size: 0.45rem;
+        letter-spacing: 0.5px;
+    }
+
+    /* HERO */
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.85rem;
+    }
+    
+    .hero-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+    }
+    
+    .stat-num {
+        font-size: 1.4rem;
+    }
+    
+    .stat-label {
+        font-size: 0.65rem;
+    }
+
+    /* ABOUT */
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .keunggulan {
+        grid-template-columns: 1fr;
+    }
+
+    /* PRODUK */
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 0.8rem;
+    }
+    
+    .product-info {
+        padding: 12px;
+    }
+    
+    .product-name {
+        font-size: 0.9rem;
+    }
+    
+    .product-btns {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .btn-wa,
+    .btn-add-cart {
+        padding: 6px;
+        font-size: 0.7rem;
+    }
+
+    /* TESTIMONI */
+    .testi-card {
+        padding: 16px;
+    }
+
+    /* GALERI */
+    .galeri-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* KONTAK */
+    .map-placeholder {
+        height: 200px;
+    }
+
+    /* FOOTER */
+    .footer-col h4 {
+        font-size: 0.7rem;
+    }
+    
+    .footer-col ul li a {
+        font-size: 0.8rem;
+    }
+
+    /* AUTH */
+    .auth-box {
+        padding: 20px;
+    }
+    
+    .auth-header h2 {
+        font-size: 1.4rem;
+    }
+    
+    .auth-header p {
+        font-size: 0.8rem;
+    }
+
+    /* PAGINATION */
+    .pagination-container {
+        gap: 4px;
+    }
+    
+    .pagination-btn {
+        padding: 4px 10px;
+        font-size: 0.7rem;
+    }
+}
+
+/* ===== EXTRA SMALL (480px below) ===== */
+@media (max-width: 480px) {
+    /* NAVBAR */
+    .logo {
+        font-size: 0.7rem;
+    }
+    
+    .logo span {
+        font-size: 0.4rem;
+        letter-spacing: 0.5px;
+    }
+
+    /* HERO */
+    .hero-content h1 {
+        font-size: 1.3rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.8rem;
+    }
+    
+    .hero-badge {
+        font-size: 0.6rem;
+        padding: 4px 12px;
+    }
+
+    /* PRODUK */
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+    
+    .product-card {
+        border-radius: 6px;
+    }
+    
+    .product-img {
+        aspect-ratio: 1/1;
+    }
+    
+    .product-category {
+        font-size: 0.6rem;
+    }
+    
+    .product-name {
+        font-size: 0.8rem;
+    }
+    
+    .price-now {
+        font-size: 0.9rem;
+    }
+
+    /* TESTIMONI */
+    .testi-card {
+        padding: 12px;
+    }
+    
+    .testi-text {
+        font-size: 0.8rem;
+    }
+
+    /* GALERI */
+    .galeri-grid {
+        gap: 6px;
+    }
+
+    /* KONTAK */
+    .kontak-info-item {
+        gap: 10px;
+    }
+    
+    .kontak-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    /* FOOTER */
+    .footer-grid {
+        gap: 1rem;
+    }
+    
+    .footer-brand p {
+        font-size: 0.8rem;
+    }
+
+    /* AUTH */
+    .auth-box {
+        padding: 16px;
+    }
+    
+    .auth-header h2 {
+        font-size: 1.2rem;
+    }
+}
+
+/* ===== HAMBURGER MENU TOGGLE ===== */
+.nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(26, 18, 9, 0.98);
+    padding: 20px 5%;
+    z-index: 998;
+    gap: 1.2rem;
+}
+
+/* ===== PULSE ANIMATION ===== */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* ===== END OF RESPONSIVE.CSS ===== */
